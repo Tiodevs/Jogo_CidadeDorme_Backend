@@ -4,11 +4,12 @@ import { Request, Response, Router } from 'express'
 import { isAuthenticated } from './middlewares/isAuthenticated'
 
 // Controllers
-import { CreateUserController } from './controllers/user/CreateUserController'
-import { AuthUserController } from './controllers/user/AuthUserController'
-import { DetailUserController } from './controllers/user/DetailUserController'
-import { EditActiveUserController } from './controllers/user/EditActiveUserController'
-import { ListUserContoller } from './controllers/user/ListeUserController'
+// import { CreateUserController } from './controllers/user/CreateUserController'
+// import { AuthUserController } from './controllers/user/AuthUserController'
+// import { DetailUserController } from './controllers/user/DetailUserController'
+// import { EditActiveUserController } from './controllers/user/EditActiveUserController'
+// import { ListUserContoller } from './controllers/user/ListeUserController'
+import { CreateRoomController } from './controllers/room/CreateRoomController'
 const router = Router()
 
 // Configuração do envio de arquivos
@@ -20,39 +21,39 @@ router.get('/', (req: Request, res: Response) => {
   `)
 })
 
-// Cria um novo usuario
-router.post('/users', new CreateUserController().handle)
-// Pega todos os usuarios e seus cursos
-router.get('/users', isAuthenticated, new ListUserContoller().handle)
-// Desativa um usuario
-router.post('/users/edit', isAuthenticated, new EditActiveUserController().handle)
-// Faz a altenticação de login do usuario
-router.post('/login', new AuthUserController().handle)
-// Pega os detalhes do usuario logado
-router.get('/me', isAuthenticated, new DetailUserController().handle)
+// // Cria um novo usuario
+// router.post('/users', new CreateUserController().handle)
+// // Pega todos os usuarios e seus cursos
+// router.get('/users', isAuthenticated, new ListUserContoller().handle)
+// // Desativa um usuario
+// router.post('/users/edit', isAuthenticated, new EditActiveUserController().handle)
+// // Faz a altenticação de login do usuario
+// router.post('/login', new AuthUserController().handle)
+// // Pega os detalhes do usuario logado
+// router.get('/me', isAuthenticated, new DetailUserController().handle)
 
 
 // Rotas para Salas
-router.post('/rooms', ); // Criar sala
-router.get('/rooms', );  // Listar todas as salas
-router.get('/rooms', );  // Listar sala por id
+router.post('/rooms', new CreateRoomController().handle); // Criar sala
+router.get('/rooms', new CreateRoomController().handle);  // Listar todas as salas
+router.get('/rooms', new CreateRoomController().handle);  // Listar sala por id
 
 
 // Rotas para Jogadores
-router.post('/players',);         // Adicionar player
-router.put('/players/life',);     // Mudar a vida do jogador
-router.put('/players/class',);    // Mudar a classe do jogador
+router.post('/players', new CreateRoomController().handle);         // Adicionar player
+router.put('/players/life', new CreateRoomController().handle);     // Mudar a vida do jogador
+router.put('/players/class', new CreateRoomController().handle);    // Mudar a classe do jogador
 
 // Rotas para Histórico
-router.post('/history', ); // Adicionar historia
-router.get('/history', );  // Listar historia
+router.post('/history', new CreateRoomController().handle); // Adicionar historia
+router.get('/history', new CreateRoomController().handle);  // Listar historia
 
 // Rotas para Votos
-router.post('/votes', );  // Adicionar voto 
-router.get('/votes', );   // Listar votos por dia
+router.post('/votes', new CreateRoomController().handle);  // Adicionar voto 
+router.get('/votes', new CreateRoomController().handle);   // Listar votos por dia
 
 // Rotas de Controle do Jogo
-router.post('/assignclasses',); // Adicionar classes assim que começar o jogo
+router.post('/assignclasses', new CreateRoomController().handle); // Adicionar classes assim que começar o jogo
 
 
 export { router }

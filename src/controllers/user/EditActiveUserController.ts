@@ -1,17 +1,17 @@
-import { Request, Response } from "express";
-import { EditActiveUserService } from "../../services/user/EditActiveUserService";
+// import { Request, Response } from "express";
+// import { EditActiveUserService } from "../../services/user/EditActiveUserService";
 
-export class EditActiveUserController{
-    async handle(req: Request, res: Response){
+// export class EditActiveUserController{
+//     async handle(req: Request, res: Response){
         
-        const {user_id} = req.body
+//         const {user_id} = req.body
 
-        const editActiveServices = new EditActiveUserService()
+//         const editActiveServices = new EditActiveUserService()
 
-        const editActive = await editActiveServices.execute({
-            user_id
-        })
+//         const editActive = await editActiveServices.execute({
+//             user_id
+//         })
         
-        res.json(editActive)
-    }
-}
+//         res.json(editActive)
+//     }
+// }
