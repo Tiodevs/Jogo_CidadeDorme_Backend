@@ -12,6 +12,7 @@ import { isAuthenticated } from './middlewares/isAuthenticated'
 import { CreateRoomController } from './controllers/room/CreateRoomController'
 import { ListRoomsController } from './controllers/room/ListRoomsController'
 import { DetailRoomController } from './controllers/room/DetailRoomController'
+import { AddPlayerController } from './controllers/player/AddPlayerController'
 const router = Router()
 
 // Configuração do envio de arquivos
@@ -42,7 +43,7 @@ router.post('/rooms/list', new DetailRoomController().handle);  // Listar sala p
 
 
 // Rotas para Jogadores
-router.post('/players', new CreateRoomController().handle);         // Adicionar player
+router.post('/players', new AddPlayerController().handle);         // Adicionar player
 router.put('/players/life', new CreateRoomController().handle);     // Mudar a vida do jogador
 router.put('/players/class', new CreateRoomController().handle);    // Mudar a classe do jogador
 
