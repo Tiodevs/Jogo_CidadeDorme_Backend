@@ -1,0 +1,74 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+// model User {
+//   id           String   @id @default(uuid()) // ID único com UUID
+//   name         String
+//   email        String   @unique // E-mail deve ser único
+//   password     String   // Senha para login
+//   phoneNumber  String?
+//   profilePhoto String?  // URL da foto de perfil (opcional)
+//   role         String   // Cargo
+//   createdAt    DateTime @default(now())
+//   active       Boolean  @default(true) // Se está ativo na empresa
+// }
+
+model Room {
+  id        String   @id @default(uuid())
+  CountPerson   Int
+  CountPolice   Int
+  CountKiller   Int
+  CountHealer   Int
+  Day           Int  @default(0)
+
+  History History[] 
+  Players Players[]
+  Votes   Votes[]
+}
+
+model Players{
+  id          String  @id @default(uuid())
+  name        String
+  category    String  @default("Sem classe")
+  life        Int     @default(1)
+  Active      Boolean @default(true)
+
+  roomId    String
+  room      Room     @relation(fields: [roomId], references: [id])
+
+  Votes Votes[]
+}
+
+model Votes {
+  id        String  @id @default(uuid())
+  day       Int
+
+  roomId    String
+  room      Room     @relation(fields: [roomId], references: [id])
+  
+  playerId  String
+  player    Players  @relation(fields: [playerId], references: [id])
+
+}
+
+model History {
+  id        String  @id @default(uuid())
+  day       Int
+  history   String
+
+  roomId    String
+  room      Room     @relation(fields: [roomId], references: [id])
+}
+
+
+
+
+
