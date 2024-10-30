@@ -14,6 +14,7 @@ import { ListRoomsController } from './controllers/room/ListRoomsController'
 import { DetailRoomController } from './controllers/room/DetailRoomController'
 import { AddPlayerController } from './controllers/player/AddPlayerController'
 import { AssignClassesController } from './controllers/logics/AssignClassesController'
+import { EditLifePlayerController } from './controllers/player/EditLifePlayerController'
 const router = Router()
 
 // Configuração do envio de arquivos
@@ -45,8 +46,7 @@ router.post('/rooms/list', new DetailRoomController().handle);  // Listar sala p
 
 // Rotas para Jogadores
 router.post('/players', new AddPlayerController().handle);         // Adicionar player
-router.put('/players/life', new CreateRoomController().handle);     // Mudar a vida do jogador
-router.put('/players/class', new CreateRoomController().handle);    // Mudar a classe do jogador
+router.put('/players/life', new EditLifePlayerController().handle);     // Mudar a vida do jogador
 
 // Rotas para Histórico
 router.post('/history', new CreateRoomController().handle); // Adicionar historia
