@@ -13,6 +13,7 @@ import { CreateRoomController } from './controllers/room/CreateRoomController'
 import { ListRoomsController } from './controllers/room/ListRoomsController'
 import { DetailRoomController } from './controllers/room/DetailRoomController'
 import { AddPlayerController } from './controllers/player/AddPlayerController'
+import { AssignClassesController } from './controllers/logics/AssignClassesController'
 const router = Router()
 
 // Configuração do envio de arquivos
@@ -56,7 +57,7 @@ router.post('/votes', new CreateRoomController().handle);  // Adicionar voto
 router.get('/votes', new CreateRoomController().handle);   // Listar votos por dia
 
 // Rotas de Controle do Jogo
-router.post('/assignclasses', new CreateRoomController().handle); // Adicionar classes assim que começar o jogo
+router.post('/assignclasses', new AssignClassesController().handle); // Adicionar classes assim que começar o jogo
 
 
 export { router }
