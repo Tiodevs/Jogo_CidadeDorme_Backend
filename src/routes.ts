@@ -10,6 +10,8 @@ import { isAuthenticated } from './middlewares/isAuthenticated'
 // import { EditActiveUserController } from './controllers/user/EditActiveUserController'
 // import { ListUserContoller } from './controllers/user/ListeUserController'
 import { CreateRoomController } from './controllers/room/CreateRoomController'
+import { ListRoomsController } from './controllers/room/ListRoomsController'
+import { DetailRoomController } from './controllers/room/DetailRoomController'
 const router = Router()
 
 // Configuração do envio de arquivos
@@ -35,8 +37,8 @@ router.get('/', (req: Request, res: Response) => {
 
 // Rotas para Salas
 router.post('/rooms', new CreateRoomController().handle); // Criar sala
-router.get('/rooms', new CreateRoomController().handle);  // Listar todas as salas
-router.get('/rooms', new CreateRoomController().handle);  // Listar sala por id
+router.get('/rooms/list', new ListRoomsController().handle);  // Listar todas as salas
+router.post('/rooms/list', new DetailRoomController().handle);  // Listar sala por id
 
 
 // Rotas para Jogadores
