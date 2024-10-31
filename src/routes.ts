@@ -18,6 +18,7 @@ import { EditLifePlayerController } from './controllers/player/EditLifePlayerCon
 import { AddHistoryController } from './controllers/history/AddEventController'
 import { ListEventByDayController } from './controllers/history/ListEventByDayController'
 import { AddVoteController } from './controllers/votes/AddVoteController'
+import { EndVotesController } from './controllers/logics/EndVotesController'
 const router = Router()
 
 // Configuração do envio de arquivos
@@ -60,7 +61,7 @@ router.post('/votes', new AddVoteController().handle);     // Adicionar voto
 
 // Rotas de Controle do Jogo
 router.post('/assignclasses', new AssignClassesController().handle); // Adicionar classes assim que começar o jogo
-router.post('/endvotes', new CreateRoomController().handle);   // Listar votos por dia
+router.post('/endvotes', new EndVotesController().handle);   // Listar votos por dia
 
 
 export { router }
