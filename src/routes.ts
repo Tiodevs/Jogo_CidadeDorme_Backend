@@ -16,6 +16,8 @@ import { AddPlayerController } from './controllers/player/AddPlayerController'
 import { AssignClassesController } from './controllers/logics/AssignClassesController'
 import { EditLifePlayerController } from './controllers/player/EditLifePlayerController'
 import { AddHistoryController } from './controllers/history/AddEventController'
+import { ListEventByDayController } from './controllers/history/ListEventByDayController'
+import { AddVoteController } from './controllers/votes/AddVoteController'
 const router = Router()
 
 // Configuração do envio de arquivos
@@ -51,14 +53,14 @@ router.put('/players/life', new EditLifePlayerController().handle);     // Mudar
 
 // Rotas para Histórico
 router.post('/history', new AddHistoryController().handle); // Adicionar historia
-router.get('/history', new CreateRoomController().handle);  // Listar historia
+router.post('/history/list', new ListEventByDayController().handle);  // Listar historia
 
 // Rotas para Votos
-router.post('/votes', new CreateRoomController().handle);  // Adicionar voto 
-router.get('/votes', new CreateRoomController().handle);   // Listar votos por dia
+router.post('/votes', new AddVoteController().handle);     // Adicionar voto 
 
 // Rotas de Controle do Jogo
 router.post('/assignclasses', new AssignClassesController().handle); // Adicionar classes assim que começar o jogo
+router.post('/endvotes', new CreateRoomController().handle);   // Listar votos por dia
 
 
 export { router }
