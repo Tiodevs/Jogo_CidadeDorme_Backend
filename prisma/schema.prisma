@@ -27,7 +27,7 @@ model Room {
   CountPolice   Int
   CountKiller   Int
   CountHealer   Int
-  Day           Int  @default(0)
+  Day           Int  @default(1)
 
   History History[] 
   Players Players[]
@@ -38,7 +38,7 @@ model Players{
   id          String  @id @default(uuid())
   name        String
   category    String  @default("Sem classe")
-  life        Int     @default(1)
+  life        Int     @default(2)
   Active      Boolean @default(true)
 
   roomId    String
